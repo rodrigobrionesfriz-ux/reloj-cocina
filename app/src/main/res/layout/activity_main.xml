@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/bg"
+    android:padding="12dp">
+
+    <!-- IZQUIERDA: reloj grande -->
+    <LinearLayout
+        android:id="@+id/clockPanel"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="56"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/panel"
+        android:padding="12dp">
+
+        <cl.cocina.launcher.AnalogClockView
+            android:id="@+id/analog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Domingo 22 de noviembre"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/accent"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <!-- DERECHA -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="44"
+        android:layout_marginLeft="12dp"
+        android:orientation="vertical">
+
+        <!-- Calendario -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:orientation="vertical"
+            android:background="@drawable/panel"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/prevMonth"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:gravity="center"
+                    android:text="‹"
+                    android:textColor="@color/muted"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/monthTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Noviembre 2026"
+                    android:textColor="@color/text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/nextMonth"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:gravity="center"
+                    android:text="›"
+                    android:textColor="@color/muted"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <cl.cocina.launcher.MonthView
+                android:id="@+id/monthView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/events"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="@color/muted"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Caja de aplicaciones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            android:background="@drawable/panel"
+            android:padding="8dp">
+
+            <GridView
+                android:id="@+id/apps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnWidth="84dp"
+                android:gravity="center"
+                android:horizontalSpacing="4dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="auto_fit"
+                android:stretchMode="spacingWidthUniform"
+                android:verticalSpacing="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

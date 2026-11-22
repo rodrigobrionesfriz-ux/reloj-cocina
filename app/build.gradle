@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'cl.cocina.launcher'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'cl.cocina.launcher'
+        minSdk 16          // Philips PI3100: Android 4.1 / 4.2
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    signingConfigs {
+        cocina {
+            storeFile file('cocina.keystore')
+            storePassword 'cocina123'
+            keyAlias 'cocina'
+            keyPassword 'cocina123'
+            storeType 'PKCS12'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.cocina
+        }
+        debug {
+            signingConfig signingConfigs.cocina
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
